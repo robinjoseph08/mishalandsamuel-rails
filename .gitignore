@@ -15,3 +15,9 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore .DS_Store files from Mac
+.DS_Store
+
+# Ignore .env file with secrets
+.env
