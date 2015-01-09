@@ -212,6 +212,12 @@ object:focus {
     button {
       box-shadow: $shadow;
     }
+
+    a {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
