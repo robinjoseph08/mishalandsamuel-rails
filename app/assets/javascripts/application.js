@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require jquery
 //= require handlebars
 //= require ember
 //= require ember-data
@@ -21,6 +19,6 @@
 //= require ./mishalandsamuel
 
 // for more details see: http://emberjs.com/guides/application/
-Mishalandsamuel = Ember.Application.create();
+App = Ember.Application.create();
 
 //= require_tree .

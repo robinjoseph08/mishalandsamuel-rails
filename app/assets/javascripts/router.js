@@ -1,5 +1,22 @@
-// For more information see: http://emberjs.com/guides/routing/
+App.Router.reopen({
+  location: 'history'
+});
 
-Mishalandsamuel.Router.map(function() {
+Ember.Route.reopen({
+  activate: function (router) {
+    this._super(router);
+
+    var text = "Mishal and Samuel";
+    var title = this.get('title');
+
+    if(title) {
+      text += " | " + title;
+    }
+
+    $(document).find('title').text(text);
+  }
+});
+
+App.Router.map(function() {
   // this.resource('posts');
 });

@@ -1,0 +1,149 @@
+@import 'variables';
+@import 'mixins';
+
+/* STYLE RESET */
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  font-family: $normal-font;
+  // line-height: 1.5em;
+  color: $gray-color;
+  background: $white-color;
+}
+
+b,
+th,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $bold-font;
+  font-weight: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+hr {
+  background: darken($white-color,20%);
+  border: none;
+  height: 1px;
+  width: 100%;
+}
+
+img {
+  display: block;
+}
+
+input,
+textarea {
+  font-family: $normal-font;
+  border-radius: $border-radius;
+  background: #fff;
+  -webkit-appearance: none;
+  font-size: 14px;
+  padding: 10px 15px;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+  display: block;
+  border: 2px $teal-color solid;
+  margin: 2px auto;
+  @include border-box;
+
+  &:disabled {
+    color: #999999;
+    border-color: $disabled-color;
+  }
+
+  &.half-input {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 100px;
+    max-width: calc(100px - 2px);
+
+    &:first-child {
+      margin-right: 2px;
+    }
+
+    &:last-child {
+      margin-left: 2px;
+    }
+  }
+}
+
+button.full {
+  width: 100%;
+  max-width: 200px;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+  font-family: $normal-font;
+  border-radius: $border-radius;
+  background: $teal-color;
+  color: $white-color;
+  -webkit-appearance: none;
+  font-size: 14px;
+  @include border-box;
+  padding: 10px 15px;
+  margin: 2px auto;
+  border: 2px $teal-color solid;
+
+  &.bold {
+    font-family: $bold-font;
+  }
+
+  &:hover {
+    background: darken($teal-color, 10%);
+    border-color: darken($teal-color, 10%);
+  }
+
+  &:active,
+  &.active {
+    background: darken($teal-color, 20%);
+    border-color: darken($teal-color, 20%);
+  }
+
+  &:disabled {
+    background: $disabled-color;
+    border-color: $disabled-color;
+    cursor: default;
+  }
+
+  &.error {
+    background: $error-color;
+    border-color: $error-color;
+
+    &:hover {
+      background: darken($error-color, 10%);
+      border-color: darken($error-color, 10%);
+    }
+
+    &:active,
+    &.active {
+      background: darken($error-color, 20%);
+      border-color: darken($error-color, 20%);
+    }
+  }
+}
+
+input:focus,
+textarea:focus,
+button:focus,
+applet:focus,
+embed:focus,
+iframe:focus,
+object:focus {
+  outline: none;
+}
