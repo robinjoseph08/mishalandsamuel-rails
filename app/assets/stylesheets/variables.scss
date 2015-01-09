@@ -7,9 +7,12 @@ $navy-color:  #0C0D4B;
 $disabled-color:         #AAAAAA;
 $error-color:            #EA6153;
 
-$normal-font: "Raleway Medium",  "Helvetica Neue", Helvetica, Arial, sans-serif;
-$bold-font:   "Raleway Bold",    "Helvetica Neue", Helvetica, Arial, sans-serif;
-$light-font:  "Raleway Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$title-font:   "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$heading-font: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$body-font:    "Source Sans Pro",      "Helvetica Neue", Helvetica, Arial, sans-serif;
+// $body-font:    "Lato",      "Helvetica Neue", Helvetica, Arial, sans-serif;
+// $body-font:    "Roboto Slab",      "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 $max-width:     960px;
 $border-radius: 4px;
+$shadow:        0 1px 2px rgba(0, 0, 0, 0.7);

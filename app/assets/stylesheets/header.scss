@@ -1,0 +1,43 @@
+@import 'variables';
+@import 'mixins';
+
+.header {
+  font-family: $heading-font;
+  text-transform: uppercase;
+  text-align: center;
+  background: white;
+  z-index: 10;
+
+  .inner {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 20px;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 20px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        a {
+          &.active,
+          &:hover {
+            color: $teal-color;
+          }
+        }
+      }
+    }
+  }
+}

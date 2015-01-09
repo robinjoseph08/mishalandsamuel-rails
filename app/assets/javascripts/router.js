@@ -18,5 +18,10 @@ Ember.Route.reopen({
 });
 
 App.Router.map(function() {
-  // this.resource('posts');
+
+  this.resource('story');
+  this.resource('photos');
+  this.resource('where');
+  this.resource('rsvp');
+
 });
