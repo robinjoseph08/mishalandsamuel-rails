@@ -25,6 +25,7 @@ h5,
 h6 {
   font-family: $heading-font;
   font-weight: normal;
+  color: $teal-color;
 
   &.uppercase {
     text-transform: uppercase;
@@ -162,12 +163,19 @@ object:focus {
 /* JUMBOTRON */
 
 .jumbotron {
-  // background: image-url('billboard.jpg');
-  background: url('https://www.ritani.com/wp-content/uploads/2013/10/engagement-ring-couple.jpg?9d994a');
   background-size: cover;
-  color: white;
   position: relative;
   text-shadow: $shadow;
+
+  &#home {
+    // background: image-url('billboard.jpg');
+    background-image: url('https://www.ritani.com/wp-content/uploads/2013/10/engagement-ring-couple.jpg?9d994a');
+  }
+
+  &#where {
+    // background: image-url('billboard.jpg');
+    background-image: url('http://truephotography.com/wp-content/uploads/2012/03/Engagement-Shoot-in-front-of-red-bricks-downtown-San-Diego.jpg');
+  }
 
   &:before {
     content: "";
@@ -187,6 +195,10 @@ object:focus {
     text-align: center;
     position: relative;
     z-index: 2;
+
+    * {
+      color: white;
+    }
 
     h1,
     h2 {
@@ -228,5 +240,30 @@ object:focus {
         font-size: 2.5em;
       }
     }
+  }
+}
+
+/* CONTAINER */
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 18px;
+
+  &.centered {
+    text-align: center;
+  }
+
+  a {
+    color: $teal-color;
+    text-decoration: underline;
+  }
+
+  iframe {
+    width: 100%;
+    max-width: 600px;
+    border: 2px $teal-color solid;
+    border-radius: $border-radius;
   }
 }
