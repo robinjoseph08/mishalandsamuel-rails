@@ -267,3 +267,46 @@ object:focus {
     border-radius: $border-radius;
   }
 }
+
+/* AUDIO */
+
+.audio {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 20;
+  background: white;
+  box-shadow: $shadow;
+  border-radius: $border-radius;
+  padding: 10px;
+  font-size: 12px;
+  opacity: 0.5;
+  @include transition(opacity);
+
+  &:hover {
+    opacity: 1;
+  }
+
+  h3,
+  h4 {
+    margin: 0;
+  }
+
+  h4 {
+    color: $gray-color;
+  }
+
+  .controls {
+    margin-top: 5px;
+
+    i {
+      cursor: pointer;
+    }
+  }
+}
+
+@media all and (max-width: 500px) {
+  .audio {
+    display: none;
+  }
+}

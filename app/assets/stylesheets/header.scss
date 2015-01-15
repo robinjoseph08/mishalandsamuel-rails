@@ -6,7 +6,9 @@
   text-transform: uppercase;
   text-align: center;
   background: white;
+  position: relative;
   z-index: 10;
+  box-shadow: $shadow;
 
   .inner {
     max-width: $max-width;
