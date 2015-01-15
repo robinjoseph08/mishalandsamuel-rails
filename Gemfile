@@ -28,6 +28,8 @@ gem 'jquery-rails'
 # Use Ember as the client-side MVC
 gem 'ember-rails'
 gem 'ember-source', '~> 1.9.1'
+# Use Font Awesome icons
+gem 'font-awesome-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

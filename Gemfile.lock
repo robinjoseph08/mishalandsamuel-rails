@@ -76,6 +76,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.4)
     execjs (2.2.2)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     handlebars-source (2.0.0)
@@ -176,6 +178,7 @@ DEPENDENCIES
   dotenv-rails
   ember-rails
   ember-source (~> 1.9.1)
+  font-awesome-rails
   jquery-rails
   nokogiri
   pg
