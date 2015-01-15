@@ -1,0 +1,24 @@
+@import 'variables';
+@import 'mixins';
+
+.footer {
+  font-family: $heading-font;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 14px;
+  color: $teal-color;
+  max-width: $max-width;
+  margin: 0 auto;
+
+  hr {
+    margin: 0;
+  }
+
+  .inner {
+    padding: 20px;
+
+    p {
+      margin: 0;
+    }
+  }
+}
