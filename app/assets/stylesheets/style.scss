@@ -164,17 +164,25 @@ object:focus {
 
 .jumbotron {
   background-size: cover;
+  background-position: center center;
   position: relative;
   text-shadow: $shadow;
 
   &#home {
-    // background: image-url('billboard.jpg');
-    background-image: url('https://www.ritani.com/wp-content/uploads/2013/10/engagement-ring-couple.jpg?9d994a');
+    // === DON'T FORGET TO ADJUST THE BACKGROUND POSITION IN THE MEDIA QUERIES ===
+    background-image: image-url('waist_down.jpg'); // 1
+    // background-image: image-url('back_shot.jpg');
+    // background-image: image-url('looking_down.jpg');
+    // background-image: image-url('open_field.jpg');
+    // background-image: image-url('leaning_back.jpg');
+    // background-image: image-url('front_shot.jpg');
+    // background-image: image-url('sam_back.jpg');
+    // background-image: url('https://www.ritani.com/wp-content/uploads/2013/10/engagement-ring-couple.jpg?9d994a');
   }
 
   &#where {
-    // background: image-url('billboard.jpg');
-    background-image: url('http://truephotography.com/wp-content/uploads/2012/03/Engagement-Shoot-in-front-of-red-bricks-downtown-San-Diego.jpg');
+    background-image: image-url('back_shot.jpg');
+    // background-image: url('http://truephotography.com/wp-content/uploads/2012/03/Engagement-Shoot-in-front-of-red-bricks-downtown-San-Diego.jpg');
   }
 
   &:before {
@@ -232,6 +240,14 @@ object:focus {
     }
   }
 }
+
+// @media all and (min-width: 800px) {
+//   .jumbotron {
+//     &#home {
+//       background-position-y: -300px; // this is for sam_back.jpg
+//     }
+//   }
+// }
 
 @media all and (max-width: 500px) {
   .jumbotron {

@@ -21,9 +21,9 @@ App.Router.map(function() {
 
   this.resource('story');
   this.resource('photos');
-  this.resource('party');
-  this.resource('registry');
+  this.resource('who');
   this.resource('where');
+  this.resource('registry');
   this.resource('rsvp');
 
 });
