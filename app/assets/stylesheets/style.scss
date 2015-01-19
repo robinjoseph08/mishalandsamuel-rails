@@ -305,11 +305,17 @@ object:focus {
     text-decoration: underline;
   }
 
+  img,
   iframe {
     width: 100%;
     max-width: 600px;
+    margin: 0 auto;
     border: 2px $teal-color solid;
     border-radius: $border-radius;
+
+    &.small {
+    max-width: 300px;
+    }
   }
 }
 
