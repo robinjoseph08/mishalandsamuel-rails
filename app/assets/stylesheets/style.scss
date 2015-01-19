@@ -332,9 +332,18 @@ object:focus {
     opacity: 1;
   }
 
-  h3,
-  h4 {
-    margin: 0;
+  & > * {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   h4 {
@@ -342,8 +351,6 @@ object:focus {
   }
 
   .controls {
-    margin-top: 5px;
-
     i {
       cursor: pointer;
     }
