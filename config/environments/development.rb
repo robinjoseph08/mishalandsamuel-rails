@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Setup ActionMailer with Letter Opener
+  config.action_mailer.delivery_method = :letter_opener
 end
