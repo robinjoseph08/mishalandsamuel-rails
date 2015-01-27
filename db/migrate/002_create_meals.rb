@@ -5,5 +5,17 @@ class CreateMeals < ActiveRecord::Migration
       t.string :name
 
     end
+
+    m      = Meal.new
+    m.name = "Chicken"
+    m.save!
+
+    m      = Meal.new
+    m.name = "Fish"
+    m.save!
+
+    m      = Meal.new
+    m.name = "Vegetarian"
+    m.save!
   end
 end
