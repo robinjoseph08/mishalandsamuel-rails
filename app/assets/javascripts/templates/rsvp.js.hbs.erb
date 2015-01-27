@@ -37,8 +37,8 @@
       </table>
       <br>
       <div class="button-group">
-        <button {{action 'allAttending'}}>Confirm All Are Attending</button>
-        <button {{action 'allNotAttending'}}>Confirm All Are Not Attending</button>
+        <button {{action 'allAttending'}}>All Are Attending</button>
+        <button {{action 'allNotAttending'}}>All Are Not Attending</button>
       </div>
       <br>
       <p>Please enter your email address so that we can inform you about your table number at a time closer to the event.</p>
@@ -46,6 +46,7 @@
       <br>
       <button {{action 'submit'}}>Save</button>
       {{banner-container errors=errors notices=notices}}
+      <p><em>If you have any questions or concerns, send an email to <a href="mailto:mishalandsamuel@gmail.com">mishalandsamuel@gmail.com</a>, and we'd be happy to address them.</em></p>
     </div>
   {{/if}}
 </div>
