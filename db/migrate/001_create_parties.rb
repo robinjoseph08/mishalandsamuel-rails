@@ -4,7 +4,6 @@ class CreateParties < ActiveRecord::Migration
 
       t.string  :code,   :unique => true
       t.string  :email
-      t.boolean :coming
 
     end
   end

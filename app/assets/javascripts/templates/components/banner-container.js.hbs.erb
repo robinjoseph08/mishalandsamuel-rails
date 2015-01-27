@@ -1,0 +1,14 @@
+{{#if hasBanners}}
+  <div class="banner-container">
+    {{#each error in errors}}
+      <div class="banner error">
+        <p>{{error}}</p><i class="fa fa-times" {{action 'removeError' error}}></i>
+      </div>
+    {{/each}}
+    {{#each notice in notices}}
+      <div class="banner notice">
+        <p>{{notice}}</p><i class="fa fa-times" {{action 'removeNotice' notice}}></i>
+      </div>
+    {{/each}}
+  </div>
+{{/if}}

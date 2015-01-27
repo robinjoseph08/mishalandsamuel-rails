@@ -16,7 +16,22 @@ class GuestsController < ApplicationController
   end
 
   def update
+    print_line
+    puts "GUEST UPDATE: #{params[:id]}"
 
+    errors = []
+    @guest.assign_attributes guest_params
+    unless @guest.valid?
+      errors = errors.concat @guest.errors.full_messages
+    end
+    unless errors.empty?
+      puts "GUEST UPDATE FAILED: #{errors}"
+      return render :json => { :errors => errors }.to_json, :status => :not_acceptable
+    end
+    puts "GUEST UPDATE SUCCESS: #{@guest.id}"
+    @guest.save
+    render :json => @guest
+    print_line
   end
 
   private
@@ -30,7 +45,7 @@ class GuestsController < ApplicationController
   end
 
   def guest_params
-    ret = params.require(:guest).permit(:name, :coming, :meal_id)
+    ret = params.require(:guest).permit(:attending, :meal_id)
     ret.each do |attr|
       ret[attr[0]] = attr[1].strip.chomp rescue attr[1]
     end

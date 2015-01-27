@@ -12,10 +12,40 @@
   <br>
   {{#if invalidCode}}
     <hr>
-    <p><em>Sorry, it doesn't look like that's a valid code. If you did in fact receive an invite with that code, send an email to <a href="mailto:mishalandsamuel@gmail.com">mishalandsamuel@gmail.com</a>, and we can help you out.</em></p>
+    <p><em>Sorry, it doesn't look like that's a valid code. If you did receive that code, send an email to <a href="mailto:mishalandsamuel@gmail.com">mishalandsamuel@gmail.com</a>, and we can help you out.</em></p>
   {{/if}}
   {{#if model}}
     <hr>
-    <h1>{{model.code}}</h1>
+    <h2>You're almost done RSVPing!</h2>
+    <p><em>Remember to click "Save" at the bottom if you change anything.</em></p>
+    <div class="section">
+      <table>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th class="center">Attending</th>
+            <th class="center">Meal Option</th>
+          </tr>
+          {{#each guest in guests}}
+            <tr>
+              <td>{{guest.name}}</td>
+              <td class="center">{{check-box checked=guest.attending}}</td>
+              <td class="center">{{drop-down defaultMessage="Select a meal" emptyMessage="No meal options available" items=meals item=guest.meal}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <br>
+      <div class="button-group">
+        <button {{action 'allAttending'}}>Confirm All Are Attending</button>
+        <button {{action 'allNotAttending'}}>Confirm All Are Not Attending</button>
+      </div>
+      <br>
+      <p>Please enter your email address so that we can inform you about your table number at a time closer to the event.</p>
+      {{input type="email" value=model.email placeholder="Email Address"}}
+      <br>
+      <button {{action 'submit'}}>Save</button>
+      {{banner-container errors=errors notices=notices}}
+    </div>
   {{/if}}
 </div>

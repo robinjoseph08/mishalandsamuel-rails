@@ -18,7 +18,22 @@ class PartiesController < ApplicationController
   end
 
   def update
+    print_line
+    puts "PARTY UPDATE: #{params[:id]}"
 
+    errors = []
+    @party.assign_attributes party_params
+    unless @party.valid?
+      errors = errors.concat @party.errors.full_messages
+    end
+    unless errors.empty?
+      puts "PARTY UPDATE FAILED: #{errors}"
+      return render :json => { :errors => errors }.to_json, :status => :not_acceptable
+    end
+    puts "PARTY UPDATE SUCCESS: #{@party.id}"
+    @party.save
+    render :json => @party
+    print_line
   end
 
   private
@@ -32,7 +47,7 @@ class PartiesController < ApplicationController
   end
 
   def party_params
-    ret = params.require(:party).permit(:name, :email, :coming)
+    ret = params.require(:party).permit(:name, :email)
     ret.each do |attr|
       ret[attr[0]] = attr[1].strip.chomp rescue attr[1]
     end

@@ -1,0 +1,19 @@
+<div {{bind-attr class=":dropdown isOpen:open"}}>
+  <div class="dropdown-selected" {{action "toggleProperty" "isOpen"}}>
+    {{#if item}}
+      <span class="selected-name">{{item.name}}</span>
+    {{else}}
+      <span class="selected-name default">{{defaultMessage}}</span>
+    {{/if}}
+    <span class="caret">
+      <i {{bind-attr class=":fa caretClass"}}></i>
+    </span>
+  </div>
+  <ul class="dropdown-list">
+    {{#each i in items}}
+      <li class="dropdown-item" {{action "selectItem" i}}>{{i.name}}</li>
+    {{else}}
+      <li class="dropdown-item default" {{action "toggleProperty" "isOpen"}}>{{emptyMessage}}</li>
+    {{/each}}
+  </ul>
+</div>
