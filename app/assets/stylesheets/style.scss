@@ -314,7 +314,90 @@ object:focus {
     border-radius: $border-radius;
 
     &.small {
-    max-width: 300px;
+      max-width: 300px;
+    }
+  }
+
+  .section {
+    padding: 20px;
+
+    .image,
+    .info {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .image {
+      width: 35%;
+      margin-right: 30px;
+
+      &.left {
+        display: none;
+      }
+
+      &.right {
+        margin-right: 0;
+        margin-left: 30px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .info {
+      width: calc(65% - 30px);
+
+      &.left {
+        text-align: left;
+      }
+
+      &.right {
+        text-align: right;
+      }
+
+      h2 {
+        margin-top: 0;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 600px) {
+  .container {
+    .section {
+      .image,
+      .info {
+        display: block;
+        width: 100%;
+      }
+
+      .image {
+        margin: 0 0 20px 0;
+        &.left {
+          display: block;
+        }
+
+        &.right {
+          display: none;
+        }
+
+        img {
+          max-width: 300px;
+          margin: 0 auto;
+        }
+      }
+
+      .info {
+        &.left,
+        &.right {
+          text-align: center;
+        }
+      }
     }
   }
 }
