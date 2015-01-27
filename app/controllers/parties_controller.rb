@@ -6,7 +6,7 @@ class PartiesController < ApplicationController
     if !params[:ids].nil?
       p = Party.find params[:ids]
     elsif !params[:code].nil?
-      p = Party.where :code => params[:code].strip
+      p = Party.where :code => params[:code].upcase.strip
     else
       p = Party.all
     end

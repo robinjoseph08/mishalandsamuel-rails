@@ -4,5 +4,18 @@
   </div>
 </div>
 <div class="container centered">
-  <h1>TODO: A whole other monster...</h1>
+  <h2>To RSVP for the wedding, enter the code found on your invitation.</h2>
+  <form {{action "findParty" on="submit"}}>
+    {{input type="text" value=code placeholder="RSVP Code"}}
+    <input type="submit" {{bind-attr disabled="isProcessing"}} value="Submit">
+  </form>
+  <br>
+  {{#if invalidCode}}
+    <hr>
+    <p><em>Sorry, it doesn't look like that's a valid code. If you did in fact receive an invite with that code, send an email to <a href="mailto:mishalandsamuel@gmail.com">mishalandsamuel@gmail.com</a>, and we can help you out.</em></p>
+  {{/if}}
+  {{#if model}}
+    <hr>
+    <h1>{{model.code}}</h1>
+  {{/if}}
 </div>

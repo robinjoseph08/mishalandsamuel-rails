@@ -8,6 +8,8 @@ gem 'dotenv-rails', group: :development
 
 # Use Rails as the framework
 gem 'rails', '4.2.0'
+# Use ActiveModel::Serializer (specificallly this version)
+gem 'active_model_serializers', '0.9.1'
 # Use PostgreSQL as the database
 gem 'pg'
 # Use Thin as the app server
