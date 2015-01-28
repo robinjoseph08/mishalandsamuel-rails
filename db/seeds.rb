@@ -8,12 +8,12 @@ p.save!
 # Guests
 
 g       = Guest.new
-g.name  = "Robin Joseph"
+g.name  = "Thomas Johnny"
 g.party = p
 g.save!
 
 g       = Guest.new
-g.name  = "Mishal Mathew"
+g.name  = "Annie Johny"
 g.party = p
 g.save!
 
