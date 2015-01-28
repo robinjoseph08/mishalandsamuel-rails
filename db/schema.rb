@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.integer "meal_id"
     t.integer "party_id"
     t.string  "name"
-    t.boolean "attending"
+    t.integer "response", default: 0
   end
 
   create_table "meals", force: :cascade do |t|
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 3) do
   end
 
   create_table "parties", force: :cascade do |t|
-    t.string "code"
-    t.string "email"
+    t.string  "code"
+    t.integer "label"
+    t.string  "email"
   end
 
 end

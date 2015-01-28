@@ -1,18 +1,22 @@
 App.Guest = DS.Model.extend({
 
-  name:      DS.attr('string'),
-  attending: DS.attr('boolean'),
-  party:     DS.belongsTo('party', { async: true }),
-  meal:      DS.belongsTo('meal', { async: true }),
+  name:     DS.attr('string'),
+  response: DS.attr('string'),
+  party:    DS.belongsTo('party', { async: true }),
+  meal:     DS.belongsTo('meal', { async: true }),
 
-  notAttending: function () {
-    return !this.get('attending');
-  }.property('attending'),
+  isAttending: function () {
+    return this.get('response') == 'attending';
+  }.property('response'),
+
+  isNotAttending: function () {
+    return this.get('response') == 'not_attending';
+  }.property('response'),
 
   clearMeal: function () {
-    if (!this.get('attending')) {
+    if (this.get('response') != 'attending') {
       this.set('meal', null);
     }
-  }.observes('attending')
+  }.observes('response')
 
 });

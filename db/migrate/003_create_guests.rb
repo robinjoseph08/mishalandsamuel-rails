@@ -6,7 +6,7 @@ class CreateGuests < ActiveRecord::Migration
       t.belongs_to :party
 
       t.string  :name
-      t.boolean :attending
+      t.integer :response, :default => 0
 
     end
   end

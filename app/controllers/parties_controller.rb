@@ -47,7 +47,7 @@ class PartiesController < ApplicationController
   end
 
   def party_params
-    ret = params.require(:party).permit(:name, :email)
+    ret = params.require(:party).permit(:email)
     ret.each do |attr|
       ret[attr[0]] = attr[1].strip.chomp rescue attr[1]
     end

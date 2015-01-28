@@ -1,7 +1,8 @@
 # Party
 
-p      = Party.new
-p.code = "TEST"
+p       = Party.new
+p.code  = "TEST"
+p.label = :mathew
 p.save!
 
 # Guests

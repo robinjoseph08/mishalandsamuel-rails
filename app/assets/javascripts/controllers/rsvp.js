@@ -85,18 +85,10 @@ App.RsvpController = Ember.Controller.extend({
       }
     },
 
-    allAttending: function () {
+    setAll: function (value) {
       this.get('model.guests').then(function (guests) {
         guests.forEach(function (guest) {
-          guest.set('attending', true);
-        });
-      });
-    },
-
-    allNotAttending: function () {
-      this.get('model.guests').then(function (guests) {
-        guests.forEach(function (guest) {
-          guest.set('attending', false);
+          guest.set('response', value);
         });
       });
     },
