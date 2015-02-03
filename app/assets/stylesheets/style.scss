@@ -94,6 +94,8 @@ button.full {
 button,
 input[type="submit"] {
   cursor: pointer;
+  // font-family: $script-font;
+  // text-transform: lowercase;
   font-family: $body-font;
   border-radius: $border-radius;
   background: $teal-color;
