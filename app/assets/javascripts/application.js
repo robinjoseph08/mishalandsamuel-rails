@@ -17,7 +17,9 @@
 //= require ember-data
 //= require_self
 //= require ./polyfills
-//= require ./owl.carousel.min
+//= require ./imagesloaded.min
+//= require ./masonry.min
+//= require ./lightbox.min
 //= require ./mishalandsamuel
 
 // for more details see: http://emberjs.com/guides/application/
