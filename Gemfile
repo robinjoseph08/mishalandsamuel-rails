@@ -33,6 +33,9 @@ gem 'ember-source', '~> 1.9.1'
 # Use Font Awesome icons
 gem 'font-awesome-rails'
 
+
+### DEVELOPMENT ###
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -42,4 +45,12 @@ group :development, :test do
   gem 'spring'
   # Use Letter Opener to preview emails in the browser
   gem 'letter_opener'
+end
+
+
+### PRODUCTION ###
+
+group :production do
+  # Use for heroku
+  gem 'rails_12factor'
 end
