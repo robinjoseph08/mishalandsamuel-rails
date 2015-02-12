@@ -17,5 +17,9 @@ class CreateMeals < ActiveRecord::Migration
     m      = Meal.new
     m.name = "Vegetarian"
     m.save!
+
+    m      = Meal.new
+    m.name = "Kid's Meal"
+    m.save!
   end
 end
