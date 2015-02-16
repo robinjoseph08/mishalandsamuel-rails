@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.0'
 
 # Use dotenv to manage secrets and other environment variables
 gem 'dotenv-rails', group: :development
