@@ -665,9 +665,13 @@ object:focus {
   margin: 0 auto;
 
   .item {
-    margin: 10px;
-    width: 180px;
+    margin: 4px;
+    width: 192px;
     position: relative;
+
+    img {
+      width: calc(100% - 4px);
+    }
 
     .overlay {
       background: rgba(255,255,255,0.5);
