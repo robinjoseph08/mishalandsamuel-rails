@@ -377,40 +377,35 @@ object:focus {
 
   &#home {
     // === DON'T FORGET TO ADJUST THE BACKGROUND POSITION IN THE MEDIA QUERIES ===
-    background-image: image-url('waist_down.jpg'); // home
-    // background-image: image-url('back_shot.jpg'); // where
-    // background-image: image-url('looking_down.jpg'); // rsvp
-    // background-image: image-url('open_field.jpg'); // photos
-    // background-image: image-url('leaning_back.jpg'); // story
-    // background-image: image-url('front_shot.jpg'); // registry
-    // background-image: image-url('sam_back.jpg'); // who
+    background-image: image-url('jumbotron/home.jpg'); // home
   }
 
   &#story {
-    background-image: image-url('leaning_back.jpg');
+    background-image: image-url('jumbotron/story.jpg');
     background-position-y: top; // this is for leaning_back.jpg
   }
 
   &#photos {
-    background-image: image-url('open_field.jpg');
-    background-position-y: top; // this is for open_field.jpg
+    background-image: image-url('jumbotron/photos.jpg');
+    // background-position-y: top; // this is for open_field.jpg
   }
 
   &#who {
-    background-image: image-url('sam_back.jpg');
-    background-position-y: -100px; // this is for sam_back.jpg
+    background-image: image-url('jumbotron/who.jpg');
+    background-position-y: -300px; // this is for sam_back.jpg
   }
 
   &#where {
-    background-image: image-url('back_shot.jpg');
+    background-image: image-url('jumbotron/where.jpg');
   }
 
   &#registry {
-    background-image: image-url('front_shot.jpg');
+    background-image: image-url('jumbotron/registry.jpg');
+    background-position-y: -100px;
   }
 
   &#rsvp {
-    background-image: image-url('looking_down.jpg');
+    background-image: image-url('jumbotron/rsvp.jpg');
   }
 
   &:before {
@@ -469,21 +464,21 @@ object:focus {
   }
 }
 
-@media all and (min-width: 1200px) {
-  .jumbotron {
-    &#photos {
-      background-position-y: -100px; // this is for sam_back.jpg
-    }
-  }
-}
+// @media all and (min-width: 1200px) {
+//   .jumbotron {
+//     &#photos {
+//       background-position-y: -100px; // this is for sam_back.jpg
+//     }
+//   }
+// }
 
-@media all and (min-width: 800px) {
-  .jumbotron {
-    &#who {
-      background-position-y: -300px; // this is for sam_back.jpg
-    }
-  }
-}
+// @media all and (min-width: 800px) {
+//   .jumbotron {
+//     &#who {
+//       background-position-y: -300px; // this is for sam_back.jpg
+//     }
+//   }
+// }
 
 @media all and (max-width: 500px) {
   .jumbotron {
