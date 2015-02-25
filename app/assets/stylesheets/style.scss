@@ -565,10 +565,19 @@ object:focus {
 
       h2 {
         margin-top: 0;
+
+        &.title {
+          margin-bottom: 0;
+        }
       }
 
       p {
         margin-bottom: 0;
+
+        &.subtitle {
+          margin-bottom: 1em;
+          margin-top: 0;
+        }
       }
     }
   }
