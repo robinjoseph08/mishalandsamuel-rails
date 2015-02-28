@@ -43,7 +43,7 @@ App.RsvpController = Ember.Controller.extend({
     this.incrementProperty('successCount');
     if (this.get('successCount') == this.get('model.guests.length')) {
       this.get('errors').setObjects([]);
-      this.get('notices').pushObjects(["Saved!"]);
+      this.get('notices').pushObjects(["Saved! Thank you for your RSVP!"]);
     }
   },
 

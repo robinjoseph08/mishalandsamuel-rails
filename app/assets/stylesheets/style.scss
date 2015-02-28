@@ -316,6 +316,30 @@ object:focus {
   }
 }
 
+/* CHECKBOXES */
+
+.checkbox {
+  cursor: pointer;
+  @include disable-selection;
+
+  i,
+  p {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  i {
+    background: #FFFFFF;
+    height: 1em;
+    width: 1em;
+    border-radius: 2px;
+  }
+
+  p {
+    margin-left: 5px;
+  }
+}
+
 /* BANNERS */
 
 .banner-container {
