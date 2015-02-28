@@ -6,14 +6,78 @@
 <div class="container centered">
   <h1>Gallery</h1>
   <div class="gallery">
-    {{#each photo in model}}
-      <div class="item">
-        <a {{bind-attr href="photo.dataUrl"}} data-lightbox="gallery">
-          <img {{bind-attr src="photo.dataUrl"}}>
-          <div class="overlay"><i class="fa fa-search-plus"></i></div>
-        </a>
-      </div>
-    {{/each}}
+    <div class="item">
+      <a href="<%= image_path "gallery/0.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/0_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/1.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/1_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/2.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/2_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/3.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/3_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/4.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/4_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/5.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/5_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/6.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/6_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/7.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/7_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/8.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/8_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/9.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/9_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/10.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/10_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="<%= image_path "gallery/11.jpg" %>" data-lightbox="gallery">
+        <%= image_tag "gallery/11_t.jpg" %>
+        <div class="overlay"><i class="fa fa-search-plus"></i></div>
+      </a>
+    </div>
   </div>
   <p>Photos by <a href="http://www.georgestreetphoto.com" target="_blank">George Street Photo &amp; Video</a></p>
 </div>
