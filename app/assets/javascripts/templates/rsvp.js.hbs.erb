@@ -25,14 +25,12 @@
             <th>Name</th>
             <th class="center">Response</th>
             <th class="center">Meal Option</th>
-            <th></th>
           </tr>
           {{#each guest in guests}}
             <tr>
               <td>{{guest.name}}</td>
               <td class="left">{{radio-button guest=guest}}</td>
               <td class="center">{{drop-down defaultMessage="Select a meal" emptyMessage="No meal options available" items=meals item=guest.meal}}</td>
-              <td class="center">{{#if guest.meal.isKidsMeal}}{{check-box label="Under 2 Years" checked=guest.under_2_years}}{{/if}}</td>
             </tr>
           {{/each}}
         </tbody>

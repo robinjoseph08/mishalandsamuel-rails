@@ -20,8 +20,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.integer "meal_id"
     t.integer "party_id"
     t.string  "name"
-    t.integer "response",      default: 0
-    t.boolean "under_2_years", default: false
+    t.integer "response", default: 0
   end
 
   create_table "meals", force: :cascade do |t|

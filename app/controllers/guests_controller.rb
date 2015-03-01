@@ -45,7 +45,7 @@ class GuestsController < ApplicationController
   end
 
   def guest_params
-    ret = params.require(:guest).permit(:response, :under_2_years, :meal_id)
+    ret = params.require(:guest).permit(:response, :meal_id)
     ret.each do |attr|
       ret[attr[0]] = attr[1].strip.chomp rescue attr[1]
     end
