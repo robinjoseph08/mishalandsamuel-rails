@@ -11,14 +11,33 @@
   margin: 0 auto;
 
   hr {
-    margin: 0;
+    margin: 0 auto;
+
+    &.small {
+      max-width: 200px;
+    }
   }
 
   .inner {
     padding: 20px;
 
+    &.copy {
+      font-size: 0.8em;
+    }
+
     p {
       margin: 0;
+    }
+
+    img {
+      display: block;
+      width: 100px;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+
+    a {
+      text-decoration: underline;
     }
   }
 }
