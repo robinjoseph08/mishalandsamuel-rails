@@ -401,23 +401,26 @@ object:focus {
   text-shadow: $shadow;
 
   &#home {
-    // === DON'T FORGET TO ADJUST THE BACKGROUND POSITION IN THE MEDIA QUERIES ===
-    background-image: image-url('jumbotron/home.jpg'); // home
+    background-image: image-url('jumbotron/home.jpg');
+    background-position-y: top;
+
+    .inner {
+      padding: 200px 20px;
+    }
   }
 
   &#story {
     background-image: image-url('jumbotron/story.jpg');
-    background-position-y: top; // this is for leaning_back.jpg
+    background-position: left top;
   }
 
   &#photos {
     background-image: image-url('jumbotron/photos.jpg');
-    // background-position-y: top; // this is for open_field.jpg
   }
 
   &#who {
     background-image: image-url('jumbotron/who.jpg');
-    background-position-y: -300px; // this is for sam_back.jpg
+    background-position-y: top;
   }
 
   &#where {
@@ -426,11 +429,12 @@ object:focus {
 
   &#registry {
     background-image: image-url('jumbotron/registry.jpg');
-    background-position-y: -100px;
+    background-position: left top;
   }
 
   &#rsvp {
     background-image: image-url('jumbotron/rsvp.jpg');
+    background-position: left top;
   }
 
   &:before {
@@ -489,21 +493,7 @@ object:focus {
   }
 }
 
-// @media all and (min-width: 1200px) {
-//   .jumbotron {
-//     &#photos {
-//       background-position-y: -100px; // this is for sam_back.jpg
-//     }
-//   }
-// }
-
-// @media all and (min-width: 800px) {
-//   .jumbotron {
-//     &#who {
-//       background-position-y: -300px; // this is for sam_back.jpg
-//     }
-//   }
-// }
+/* JUMBOTRON TEXT */
 
 @media all and (max-width: 500px) {
   .jumbotron {
