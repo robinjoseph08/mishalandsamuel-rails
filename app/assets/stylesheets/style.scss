@@ -741,3 +741,21 @@ object:focus {
     }
   }
 }
+
+@media all and (max-width: 600px) {
+  .toggle-buttons {
+    button {
+      display: block;
+
+      &:first-child {
+        margin: 0 auto;
+        margin-bottom: 10px;
+      }
+
+      &:last-child {
+        margin: 0 auto;
+        margin-top: 10px;
+      }
+    }
+  }
+}
