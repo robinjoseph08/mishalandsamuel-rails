@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="container centered">
-  <h2>To RSVP for the wedding, enter the code found on your invitation.</h2>
+  <h2>To RSVP for the wedding, please enter the code found in your invitation.</h2>
   <form {{action "findParty" on="submit"}}>
     {{input type="text" value=code placeholder="RSVP Code"}}
     <input type="submit" {{bind-attr disabled="isProcessing"}} value="Submit">
