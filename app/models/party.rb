@@ -1,5 +1,7 @@
 class Party < ActiveRecord::Base
 
+  after_save :send_notification_email
+
   has_many :guests
 
   validates :email,
@@ -10,5 +12,9 @@ class Party < ActiveRecord::Base
             :unless => "email.blank?"
 
   enum :label => [ :mathew, :johny ]
+
+  def send_notification_email
+    Mailer.notify_party_update(self).deliver_now
+  end
 
 end

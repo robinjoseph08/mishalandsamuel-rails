@@ -1,0 +1,46 @@
+@import 'variables';
+@import 'mixins';
+
+body.mailer {
+  margin: 0;
+  font-family: $body-font;
+  color: $gray-color;
+  background: $white-color;
+  text-align: left;
+  // line-height: 1.5em;
+
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 60px 20px;
+
+    .box {
+      border-radius: $border-radius;
+      border: 3px $teal-color solid;
+      padding: 20px;
+
+      svg,
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        height: 150px;
+      }
+
+      ul {
+        ul {
+          padding-left: 20px;
+        }
+      }
+    }
+
+    .footer {
+       text-align: right;
+       font-size: 12px;
+    }
+  }
+
+  a {
+    color: $teal-color;
+  }
+}
