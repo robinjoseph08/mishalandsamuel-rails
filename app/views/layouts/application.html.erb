@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Mishal and Samuel</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Lato|Montserrat:400,700|Roboto+Slab' rel='stylesheet' type='text/css'>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <%= csrf_meta_tags %>
-</head>
+  <head>
+    <title>Mishal and Samuel</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <meta name='author' content='Robin Joseph'>
+    <meta name='description' content="Mishal and Samuel's wedding website.">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <meta name='og:type' content='website'>
+    <meta name='og:url' content='http://mishalandsamuel.com/'>
+    <meta name='og:image' content='http://mishalandsamuel.com/og.jpg'>
+    <meta name='og:title' content='Mishal and Samuel'>
+    <meta name='og:description' content="Mishal and Samuel's wedding website.">
+    <meta name='twitter:card' content='summary'>
+    <meta name='twitter:creator' content='@robinjoseph08'>
+  </head>
 <body>
 
 <%= yield %>
