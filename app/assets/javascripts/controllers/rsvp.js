@@ -30,21 +30,16 @@ App.RsvpController = Ember.Controller.extend({
   }.property('content.guests'),
 
   successParty: function (resp) {
-    // save guests
-    this.set('successCount', 0);
-    this.get('model.guests').then(function (guests) {
-      guests.forEach(function (guest) {
-        guest.save().then(this.successGuest.bind(this), this.failure.bind(this));
-      }.bind(this));
-    }.bind(this));
+    this.get('errors').setObjects([]);
+    this.get('notices').pushObjects(["Saved! Thank you for your RSVP!"]);
+    mixpanel.track('Successfully updated RSVP');
   },
 
   successGuest: function (resp) {
     this.incrementProperty('successCount');
     if (this.get('successCount') == this.get('model.guests.length')) {
-      this.get('errors').setObjects([]);
-      this.get('notices').pushObjects(["Saved! Thank you for your RSVP!"]);
-      mixpanel.track('Successfully updated RSVP');
+      // save party
+      this.get('model').save().then(this.successParty.bind(this), this.failure.bind(this));
     }
   },
 
@@ -116,9 +111,13 @@ App.RsvpController = Ember.Controller.extend({
     },
 
     submit: function () {
-      // save party
-      var party = this.get('model');
-      party.save().then(this.successParty.bind(this), this.failure.bind(this));
+      // save guests
+      this.set('successCount', 0);
+      this.get('model.guests').then(function (guests) {
+        guests.forEach(function (guest) {
+          guest.save().then(this.successGuest.bind(this), this.failure.bind(this));
+        }.bind(this));
+      }.bind(this));
     }
 
   }
