@@ -44,15 +44,19 @@ App.RsvpController = Ember.Controller.extend({
     if (this.get('successCount') == this.get('model.guests.length')) {
       this.get('errors').setObjects([]);
       this.get('notices').pushObjects(["Saved! Thank you for your RSVP!"]);
+      mixpanel.track('Successfully updated RSVP');
     }
   },
 
   failure: function (resp) {
+    var errors = ['Looks like something expected happened. Try refreshing the page.'];
     if (resp.responseJSON && resp.responseJSON.errors) {
-      this.get('errors').pushObjects(resp.responseJSON.errors);
-    } else {
-      this.get('errors').pushObjects(['Looks like something expected happened. Try refreshing the page.']);
+      errors = resp.responseJSON.errors;
     }
+    mixpanel.track('RSVP error', {
+      errors: errors
+    });
+    this.get('errors').pushObjects(errors);
   },
 
   actions: {
@@ -63,21 +67,37 @@ App.RsvpController = Ember.Controller.extend({
       if (code.length > 0) {
         this.set('isProcessing', true);
         this.store.find('party', { code: code }).then(function (parties) {
+          // sucessful request
           var party = parties.get('firstObject');
           this.set('isProcessing', false);
           if (party) {
+            // successfully got a party
             this.set('invalidCode', false);
             this.set('model', party);
+            mixpanel.people.set({
+              'Code':     code.toUpperCase(),
+              'Party ID': party.get('id')
+            });
+            mixpanel.identify(code.toUpperCase());
           } else {
+            // failure to get a party
             this.set('invalidCode', true);
             this.set('model', null);
+            mixpanel.track('Empty code request', {
+              code: code.toUpperCase()
+            });
           }
         }.bind(this), function (resp) {
+          // failed request
           if (resp.status === 404) {
             this.set('invalidCode', true);
             this.set('model', null);
           }
           this.set('isProcessing', false);
+          mixpanel.track('Failed code request', {
+            code:   code.toUpperCase(),
+            status: resp.status
+          });
         }.bind(this));
       } else {
         this.set('invalidCode', false);
@@ -91,6 +111,8 @@ App.RsvpController = Ember.Controller.extend({
           guest.set('response', value);
         });
       });
+      var state = value === 'attending' ? 'All Are Attending' : 'All Are Not Attending';
+      mixpanel.track("Set '" + state + "'");
     },
 
     submit: function () {

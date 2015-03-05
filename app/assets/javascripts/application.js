@@ -16,6 +16,7 @@
 //= require ember
 //= require ember-data
 //= require_self
+//= require ./mixpanel
 //= require ./polyfills
 //= require ./imagesloaded.min
 //= require ./masonry.min
