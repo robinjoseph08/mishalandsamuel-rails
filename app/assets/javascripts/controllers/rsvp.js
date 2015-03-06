@@ -32,6 +32,7 @@ App.RsvpController = Ember.Controller.extend({
   successParty: function (resp) {
     this.get('errors').setObjects([]);
     this.get('notices').pushObjects(["Saved! Thank you for your RSVP!"]);
+    this.set('isProcessing', false);
     mixpanel.track('Successfully updated RSVP');
   },
 
@@ -52,6 +53,7 @@ App.RsvpController = Ember.Controller.extend({
       errors: errors
     });
     this.get('errors').pushObjects(errors);
+    this.set('isProcessing', false);
   },
 
   actions: {
@@ -112,7 +114,10 @@ App.RsvpController = Ember.Controller.extend({
 
     submit: function () {
       // save guests
-      this.set('successCount', 0);
+      this.setProperties({
+        isProcessing: true,
+        successCount: 0
+      });
       this.get('model.guests').then(function (guests) {
         guests.forEach(function (guest) {
           guest.save().then(this.successGuest.bind(this), this.failure.bind(this));

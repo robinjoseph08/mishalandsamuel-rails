@@ -44,7 +44,7 @@
       <p>If you are attending and wish to receive an update about your table number at a time closer to the wedding, enter your email address below.</p>
       {{input type="email" value=model.email placeholder="Email Address"}}
       <br>
-      <button {{action 'submit'}}>Save</button>
+      <button {{action 'submit'}} {{bind-attr disabled="isProcessing"}}>Save</button>
       {{banner-container errors=errors notices=notices}}
       <br>
       <p><em>If you have any questions or concerns, send an email to <a href="mailto:mishalandsamuel@gmail.com">mishalandsamuel@gmail.com</a>, and we'd be happy to address them.</em></p>
