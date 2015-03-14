@@ -7,6 +7,10 @@ class CreateMeals < ActiveRecord::Migration
     end
 
     m      = Meal.new
+    m.name = "Beef"
+    m.save!
+
+    m      = Meal.new
     m.name = "Chicken"
     m.save!
 
