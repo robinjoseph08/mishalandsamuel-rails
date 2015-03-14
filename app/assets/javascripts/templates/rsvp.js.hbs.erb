@@ -41,7 +41,7 @@
         <button {{action 'setAll' 'not_attending'}}>All Are Not Attending</button>
       </div>
       <br>
-      <p>If you are attending and wish to receive an update about your table number at a time closer to the wedding, enter your email address below.</p>
+      <p>If you wish to receive an update about your table number at a time closer to the wedding, enter your email address below. If not, you will receive it the day of the wedding.</p>
       {{input type="email" value=model.email placeholder="Email Address"}}
       <br>
       <button {{action 'submit'}} {{bind-attr disabled="isProcessing"}}>Save</button>
