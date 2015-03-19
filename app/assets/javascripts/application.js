@@ -18,9 +18,10 @@
 //= require_self
 //= require ./mixpanel
 //= require ./polyfills
-//= require ./imagesloaded.min
-//= require ./masonry.min
-//= require ./lightbox.min
+//= require ./lib/imagesloaded.min
+//= require ./lib/masonry.min
+//= require ./lib/lightbox.min
+//= require ./lib/countdown.min
 //= require ./mishalandsamuel
 
 // for more details see: http://emberjs.com/guides/application/
