@@ -481,6 +481,15 @@ object:focus {
       font-family: $body-font;
     }
 
+    .countdown {
+      font-family: $heading-font;
+      text-transform: uppercase;
+
+      .words {
+        font-size: 0.5em;
+      }
+    }
+
     button {
       box-shadow: $shadow;
     }
