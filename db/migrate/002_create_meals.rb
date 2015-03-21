@@ -7,6 +7,14 @@ class CreateMeals < ActiveRecord::Migration
     end
 
     m      = Meal.new
+    m.name = "Kid's Meal, Ages 3-12"
+    m.save!
+
+    m      = Meal.new
+    m.name = "Child Under 2"
+    m.save!
+
+    m      = Meal.new
     m.name = "Beef"
     m.save!
 
@@ -20,14 +28,6 @@ class CreateMeals < ActiveRecord::Migration
 
     m      = Meal.new
     m.name = "Vegetarian"
-    m.save!
-
-    m      = Meal.new
-    m.name = "Kid's Meal, Ages 3-12"
-    m.save!
-
-    m      = Meal.new
-    m.name = "Child Under 2"
     m.save!
   end
 end
