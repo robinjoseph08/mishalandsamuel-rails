@@ -24,6 +24,11 @@ class Party < ActiveRecord::Base
     if self.code.blank?
       a    = ('A'..'Z').to_a+(0..9).to_a
       code = nil
+
+      # exclusions for readability
+      a.delete 0
+      a.delete 'O'
+      a.delete 1
       a.delete 'I'
 
       while code.nil? || Party.exists?(:code => code)
