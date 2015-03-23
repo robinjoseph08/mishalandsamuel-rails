@@ -2,6 +2,40 @@ require 'csv'
 
 namespace :guest do
 
+  desc "Internal import from CSV"
+  task :_import, [:label] => [:environment] do |t, args|
+    path = File.expand_path("../../../data/#{args[:label]}.csv", __FILE__)
+
+    num   = nil
+    party = nil
+    CSV.foreach path do |row|
+      n = row.shift
+      p = row.shift
+
+      unless num == p
+        num = p
+
+        party       = Party.new
+        party.label = args[:label]
+        party.save!
+        puts "=> Creating new party: #{party.id}"
+      end
+
+      g       = Guest.new
+      g.name  = n
+      g.party = party
+      g.save!
+      puts "  -> name: #{n}, party: #{p}"
+    end
+  end
+
+  desc "Import from CSV"
+  task :import, [:label] => [:environment] do |t, args|
+    label = args[:label] || 'all'
+    Rake::Task["guest:_import"].execute :label => 'mishal' if label == 'mishal' || label == 'all'
+    Rake::Task["guest:_import"].execute :label => 'johny'  if label == 'johny'  || label == 'all'
+  end
+
   desc "Generate the CSV of guests"
   task :csv => [:environment] do
     file_name = "guests.csv"
