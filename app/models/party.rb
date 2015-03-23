@@ -15,7 +15,7 @@ class Party < ActiveRecord::Base
   enum :label => [ :mathew, :johny ]
 
   def send_notification_email
-    Mailer.notify_party_update(self).deliver_now
+    Mailer.notify_party_update(self).deliver_now if self.guests.count > 0
   end
 
   private
