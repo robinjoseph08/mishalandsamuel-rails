@@ -37,22 +37,23 @@ namespace :guest do
   end
 
   desc "Generate the CSV of guests"
-  task :csv => [:environment] do
+  task :export => [:environment] do
     file_name = "guests.csv"
     path      = File.expand_path("../../../data/#{file_name}", __FILE__)
 
     CSV.open(path, "w") do |csv|
       # header
-      csv << ["ID", "Name", "Attending", "Meal", "Party ID", "Party Email"]
+      csv << ["ID", "Name", "Response", "Meal", "Party ID", "Party Email", "Party Code"]
 
       Guest.order("id ASC").find_each do |g|
         data = []
         data << g.id
         data << g.name
-        data << (g.party.email.blank? ? "Unknown" : g.attending)
+        data << g.response.titleize
         data << (g.meal ? g.meal.name : "N/A")
         data << g.party.id
         data << g.party.email
+        data << g.party.code
 
         csv << data
       end
