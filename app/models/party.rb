@@ -5,17 +5,22 @@ class Party < ActiveRecord::Base
 
   has_many :guests
 
-  validates :email,
-            :format => {
-              :with    => /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\z/,
-              :message => "isn't valid"
-            },
-            :unless => "email.blank?"
-
   enum :label => [ :mathew, :johny ]
 
   def send_notification_email
     Mailer.notify_party_update(self).deliver_now if self.guests.count > 0
+  end
+
+  def address_line
+    self.address1 + (self.address2.present? ? ", #{self.address2}" : "")
+  end
+
+  def city_state_zip_country
+    "#{self.city}, #{self.state} #{self.zip}, #{self.country}"
+  end
+
+  def address
+    "#{self.address_line}, #{self.city_state_zip_country}"
   end
 
   private
