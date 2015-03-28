@@ -4,7 +4,12 @@ class CreateParties < ActiveRecord::Migration
 
       t.string  :code,  :unique => true
       t.integer :label
-      t.string  :email
+      t.string  :address1
+      t.string  :address2
+      t.string  :city
+      t.string  :state
+      t.string  :zip
+      t.string  :country
 
     end
   end
