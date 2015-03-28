@@ -7,6 +7,7 @@ class CreateGuests < ActiveRecord::Migration
 
       t.string  :name
       t.integer :response, :default => 0
+      t.string  :email
 
     end
   end
