@@ -500,7 +500,9 @@ object:focus {
 
     a {
       &:hover {
-        text-decoration: underline;
+        display: inline-block;
+        line-height: 0.97em;
+        border-bottom: 1px white solid;
       }
     }
   }
