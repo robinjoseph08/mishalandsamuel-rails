@@ -1,6 +1,7 @@
 App.Guest = DS.Model.extend({
 
   name:     DS.attr('string'),
+  email:    DS.attr('string'),
   response: DS.attr('string'),
   party:    DS.belongsTo('party', { async: true }),
   meal:     DS.belongsTo('meal', { async: true }),

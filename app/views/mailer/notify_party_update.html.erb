@@ -5,15 +5,14 @@
     <ul>
       <li><strong>ID:</strong> <%= @party.id %></li>
       <li><strong>Code:</strong> <%= @party.code %></li>
-      <li><strong>Email:</strong> <%= @party.email.present? ? @party.email : "N/A" %></li>
       <li><strong>Guests:</strong></li>
       <ul>
         <% @party.guests.find_each do |guest| %>
-          <li><strong><%= guest.name %></strong> - <%= guest.response.gsub("_", " ").titleize %><% if guest.attending? %> (<%= guest.meal.name %>)<% end %></li>
+          <li><strong><%= guest.name %><% if guest.email.present? %> (<a href="mailto:<%= guest.email %>"><%= guest.email %></a>)<% end %></strong> - <%= guest.response.gsub("_", " ").titleize %><% if guest.attending? %> (<%= guest.meal.name %>)<% end %></li>
         <% end %>
       </ul>
     </ul>
-    <p>If you want another copy of the consolidated CSV, just let me know!</p>
+    <p>If you want a copy of the master CSV, just let me know!</p>
     <p class="closing">
       <span>Thanks,</span>
       <br>

@@ -1,5 +1,5 @@
 class PartySerializer < ActiveModel::Serializer
 
-  attributes :id, :code, :email, :guest_ids
+  attributes :id, :code, :guest_ids
 
 end

@@ -17,7 +17,9 @@
   {{#if model}}
     <hr>
     <h2>You're almost done RSVPing!</h2>
+    <p>If you wish to receive an update about your table number at a time closer to the wedding, enter your email address below. If not, you will receive it the day of the wedding.</p>
     <p><em>Remember to click "Save" at the bottom if you change anything.</em></p>
+    <p class="small-error"><em>We recommend viewing this form on a larger screen for a better experience.</em></p>
     <div class="section">
       <table>
         <tbody>
@@ -25,12 +27,14 @@
             <th>Name</th>
             <th class="center">Response</th>
             <th class="center">Meal Option</th>
+            <th class="center">Email</th>
           </tr>
           {{#each guest in guests}}
             <tr>
               <td>{{guest.name}}</td>
               <td class="left">{{radio-button guest=guest}}</td>
               <td class="center">{{drop-down defaultMessage="Select a meal" emptyMessage="No meal options available" items=meals item=guest.meal}}</td>
+              <td class="center">{{input type="email" value=guest.email placeholder="Email Address"}}</td>
             </tr>
           {{/each}}
         </tbody>
@@ -40,9 +44,6 @@
         <button {{action 'setAll' 'attending'}}>All Are Attending</button>
         <button {{action 'setAll' 'not_attending'}}>All Are Not Attending</button>
       </div>
-      <br>
-      <p>If you wish to receive an update about your table number at a time closer to the wedding, enter your email address below. If not, you will receive it the day of the wedding.</p>
-      {{input type="email" value=model.email placeholder="Email Address"}}
       <br>
       <button {{action 'submit'}} {{bind-attr disabled="isProcessing"}}>Save</button>
       {{banner-container errors=errors notices=notices}}

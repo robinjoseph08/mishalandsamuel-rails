@@ -774,3 +774,15 @@ object:focus {
     }
   }
 }
+
+.small-error {
+  font-family: $heading-font;
+  color: $red-color;
+  display: none;
+}
+
+@media all and (max-width: 708px) {
+  .small-error {
+    display: block;
+  }
+}
