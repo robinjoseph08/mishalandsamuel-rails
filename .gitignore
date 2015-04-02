@@ -22,5 +22,5 @@
 # Ignore .env file with secrets
 .env
 
-# Ignore exported guests.csv
-/data/guests.csv
+# Ignore all CSVs
+/data/*.csv
