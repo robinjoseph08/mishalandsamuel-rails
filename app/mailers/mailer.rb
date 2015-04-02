@@ -4,7 +4,7 @@ class Mailer < ActionMailer::Base
 
   def notify_party_update party
     @party = party
-    mail :to      => [ENV['ROBIN_EMAIL_ADDRESS'], ENV['MAS_EMAIL_ADDRESS']],
+    mail :to      => [ENV['ROBIN_EMAIL_ADDRESS'], ENV['MAS_EMAIL_ADDRESS'], ENV['DAD_EMAIL_ADDRESS']],
          :subject => "Party #{@party.id} Updated!"
   end
 
