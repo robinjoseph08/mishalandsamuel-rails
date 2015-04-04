@@ -11,6 +11,7 @@ namespace :guest do
     CSV.foreach path do |row|
       name      = row.shift.try(:strip)
       party_num = row.shift.try(:strip)
+      code      = row.shift.try(:strip)
       address1  = row.shift.try(:strip)
       address2  = row.shift.try(:strip)
       cszc      = row.shift.try(:strip).split(', ') rescue []
@@ -26,6 +27,7 @@ namespace :guest do
 
         party          = Party.new
         party.label    = args[:label]
+        party.code     = code if code.present?
         party.address1 = address1
         party.address2 = address2
         party.city     = city
@@ -33,7 +35,7 @@ namespace :guest do
         party.zip      = zip
         party.country  = country
         party.save!
-        puts "=> Creating new party: #{party.id}" + (address1.present? ? ", address: #{party.address}" : "")
+        puts "=> Creating new party: #{party.id}" + (address1.present? ? ", address: #{party.address}" : "") + (code.present? ? ", code: #{party.code}" : "")
       end
 
       g       = Guest.new
@@ -41,7 +43,7 @@ namespace :guest do
       g.email = email
       g.party = party
       g.save!
-      puts "  -> name: #{name}, party: #{party_num}" + (email.present? ? ", email: #{email}" : "")
+      puts "  -> name: #{name}, party: #{party.id}" + (email.present? ? ", email: #{email}" : "")
     end
   end
 
