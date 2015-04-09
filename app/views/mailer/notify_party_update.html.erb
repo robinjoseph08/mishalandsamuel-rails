@@ -7,7 +7,7 @@
       <li><strong>Code:</strong> <%= @party.code %></li>
       <li><strong>Guests:</strong></li>
       <ul>
-        <% @party.guests.find_each do |guest| %>
+        <% @party.guests.order("id ASC").find_each do |guest| %>
           <li><strong><%= guest.name %><% if guest.email.present? %> (<a href="mailto:<%= guest.email %>"><%= guest.email %></a>)<% end %></strong> - <%= guest.response.gsub("_", " ").titleize %><% if guest.attending? %> (<%= guest.meal.name %>)<% end %></li>
         <% end %>
       </ul>
@@ -19,5 +19,5 @@
       <span>Robin</span>
     </p>
   </div>
-  <div class="footer">&copy; 2015 Mishal &amp; Samuel</div>
+  <div class="copyright">&copy; 2015 Mishal &amp; Samuel</div>
 </div>

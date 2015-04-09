@@ -1,14 +1,37 @@
 class Party < ActiveRecord::Base
 
   before_create :generate_code
-  after_save    :send_notification_email
+  after_save    :send_party_notification_email
+  after_save    :send_guest_notification_email
 
   has_many :guests
 
   enum :label => [ :mathew, :johny ]
 
-  def send_notification_email
+  def send_party_notification_email
     Mailer.notify_party_update(self).deliver_now if self.guests.count > 0
+  end
+
+  def send_guest_notification_email
+    if self.guests.count > 0
+      guests = []
+      self.guests.find_each do |guest|
+        next if guest.not_attending? || guest.email.blank? # only deal with guests that are attending and have an email
+        index = guests.index { |item| item[:email] == guest.email }
+        if index.nil?
+          g = {
+            :name  => [guest.name],
+            :email => guest.email
+          }
+          guests << g
+        else
+          guests[index][:name] << guest.name
+        end
+      end
+      guests.each do |guest|
+        Mailer.guest_notification(guest, self).deliver_now
+      end
+    end
   end
 
   def address_line

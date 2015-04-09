@@ -9,6 +9,18 @@ body.mailer {
   text-align: left;
   // line-height: 1.5em;
 
+  hr {
+    border: 0;
+    margin: 20px 0;
+    height: 1px;
+    background: $teal-color;
+  }
+
+  .disclaimer {
+    color: lighten($gray-color, 20%);
+    font-size: 12px;
+  }
+
   .container {
     max-width: 500px;
     margin: 0 auto;
@@ -34,9 +46,18 @@ body.mailer {
       }
     }
 
-    .footer {
-       text-align: right;
-       font-size: 12px;
+    .copyright {
+      text-align: right;
+      font-size: 12px;
+    }
+
+    .verse {
+      font-family: $heading-font;
+      color: $teal-color;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 12px;
+      margin-top: 5px;
     }
   }
 
