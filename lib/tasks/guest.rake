@@ -85,4 +85,27 @@ namespace :guest do
     end
   end
 
+  desc "Generate the mailing CSV"
+  task :mailing => [:environment] do
+    file_name = "mailing.csv"
+    path      = File.expand_path("../../../data/#{file_name}", __FILE__)
+
+    CSV.open(path, "w") do |csv|
+      # header
+      csv << ["Party ID", "Party Name", "Address 1", "Address 2", "Label"]
+
+      Party.order("id ASC").find_each do |p|
+        data = []
+        guests = p.guests.order("id ASC")
+        data << p.id
+        data << guests.first.name + (guests.count > 1 ? " & Family" : "")
+        data << (p.address1.present? ? p.address1 + (p.address2.present? ? ", #{p.address2}" : "") : "N/A")
+        data << (p.address1.present? ? "#{p.city}, #{p.state} #{p.zip}" + (p.country == "US" ? "" : ", #{p.country}") : "N/A")
+        data << p.label.titleize
+
+        csv << data
+      end
+    end
+  end
+
 end
