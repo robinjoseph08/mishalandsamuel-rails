@@ -56,7 +56,7 @@ namespace :guest do
 
   desc "Generate the CSV of guests"
   task :export => [:environment] do
-    file_name = "guests.csv"
+    file_name = "master.csv"
     path      = File.expand_path("../../../data/#{file_name}", __FILE__)
 
     CSV.open(path, "w") do |csv|
@@ -106,6 +106,14 @@ namespace :guest do
         csv << data
       end
     end
+  end
+
+  desc "Send email with CSV"
+  task :email => [:environment, :export] do
+    puts "Sending email..."
+    file_name = "master.csv"
+    path      = File.expand_path("../../../data/#{file_name}", __FILE__)
+    Mailer.send_csv(path).deliver_now
   end
 
 end

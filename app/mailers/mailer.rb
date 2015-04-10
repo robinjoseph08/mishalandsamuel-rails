@@ -15,4 +15,11 @@ class Mailer < ActionMailer::Base
          :subject => "Thanks for your RSVP!"
   end
 
+  def send_csv path
+    attachments['master.csv'] = File.read path
+    mail :to      => [ENV['MAS_EMAIL_ADDRESS'], ENV['DAD_EMAIL_ADDRESS']],
+         :from    => "Wedding Updates <#{ENV['MAS_EMAIL_ADDRESS']}>",
+         :subject => "Updated Master CSV"
+  end
+
 end
