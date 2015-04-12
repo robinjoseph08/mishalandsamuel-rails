@@ -1,7 +1,21 @@
 <div class="container">
   <div class="box">
     <img src="http://mishalandsamuel.com/logo.png">
-    <p>Here's an updated copy of the master CSV. Let me know if you need anything else!</p>
+    <p>Here's an updated copy of the master CSV. Here's also some overview stats of your guests:</p>
+    <ul>
+      <li><strong>Total Unconfirmed Guests:</strong> <%= Guest.where(:response => 0).count %></li>
+      <li><strong>Total RSVP'd Guests:</strong> <%= Guest.all.count - Guest.where(:response => 0).count %></li>
+      <ul>
+        <li><strong>Total Not Attending Guests:</strong> <%= Guest.where(:response => 2).count %></li>
+        <li><strong>Total Attending Guests:</strong> <%= Guest.where(:response => 1).count %></li>
+        <ul>
+          <% Meal.all.find_each do |meal| %>
+            <li><strong>Total <%= meal.name %> Orders:</strong> <%= Guest.where(:meal => meal).count %></li>
+          <% end %>
+        </ul>
+      </ul>
+    </ul>
+    <p>Let me know if you need anything else!</p>
     <p class="closing">
       <span>Thanks,</span>
       <br>
