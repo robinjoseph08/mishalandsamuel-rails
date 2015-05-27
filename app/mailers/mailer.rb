@@ -22,4 +22,11 @@ class Mailer < ActionMailer::Base
          :subject => "Updated Master CSV"
   end
 
+  def send_invite email, party
+    @code = party.code
+    mail :to      => email,
+         :from    => "Mishal and Samuel <#{ENV['MAS_EMAIL_ADDRESS']}>",
+         :subject => "Mathew/Johny Wedding Invitation"
+  end
+
 end

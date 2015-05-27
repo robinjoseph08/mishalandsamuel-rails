@@ -9,6 +9,17 @@ body.mailer {
   text-align: left;
   // line-height: 1.5em;
 
+  h1,
+  h2 {
+    font-family: $heading-font;
+    font-weight: normal;
+    color: $teal-color;
+
+    &.uppercase {
+      text-transform: uppercase;
+    }
+  }
+
   hr {
     border: 0;
     margin: 20px 0;
@@ -30,6 +41,10 @@ body.mailer {
       border-radius: $border-radius;
       border: 3px $teal-color solid;
       padding: 20px;
+
+      &.text-center {
+        text-align: center;
+      }
 
       svg,
       img {
@@ -63,5 +78,9 @@ body.mailer {
 
   a {
     color: $teal-color;
+  }
+
+  .lg-text {
+    font-size: 1.5em;
   }
 }
