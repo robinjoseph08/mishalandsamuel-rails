@@ -3,14 +3,34 @@
     <img src="http://mishalandsamuel.com/logo.png">
     <p>Here's an updated copy of the master CSV. Here's also some overview stats of your guests:</p>
     <ul>
-      <li><strong>Total Unconfirmed Guests:</strong> <%= Guest.where(:response => 0).count %></li>
-      <li><strong>Total RSVP'd Guests:</strong> <%= Guest.all.count - Guest.where(:response => 0).count %></li>
+      <li><strong>Total Unconfirmed Guests:</strong> <%= @data[:unconfirmed][:total] %></li>
       <ul>
-        <li><strong>Total Not Attending Guests:</strong> <%= Guest.where(:response => 2).count %></li>
-        <li><strong>Total Attending Guests:</strong> <%= Guest.where(:response => 1).count %></li>
+        <li><strong>Unconfirmed Mathew Guests:</strong> <%= @data[:unconfirmed][:mathew] %></li>
+        <li><strong>Unconfirmed Johny Guests:</strong> <%= @data[:unconfirmed][:johny] %></li>
+      </ul>
+      <br>
+      <li><strong>Total RSVP'd Guests:</strong> <%= @data[:rsvp][:total] %></li>
+      <ul>
+        <li><strong>RSVP'd Mathew Guests:</strong> <%= @data[:rsvp][:mathew] %></li>
+        <li><strong>RSVP'd Johny Guests:</strong> <%= @data[:rsvp][:johny] %></li>
+      </ul>
+      <br>
+      <ul>
+        <li><strong>Total Guests Not Attending:</strong> <%= @data[:not_attending][:total] %></li>
         <ul>
+          <li><strong>Mathew Guests Not Attending:</strong> <%= @data[:not_attending][:mathew] %></li>
+          <li><strong>Johny Guests Not Attending:</strong> <%= @data[:not_attending][:johny] %></li>
+        </ul>
+        <br>
+        <li><strong>Total Guests Attending:</strong> <%= @data[:attending][:total] %></li>
+        <ul>
+          <li><strong>Mathew Guests Attending:</strong> <%= @data[:attending][:mathew] %></li>
+          <li><strong>Johny Guests Attending:</strong> <%= @data[:attending][:johny] %></li>
           <% Meal.all.find_each do |meal| %>
-            <li><strong>Total <%= meal.name %> Orders:</strong> <%= Guest.where(:meal => meal).count %></li>
+            <br>
+            <li><strong>Total "<%= meal.name %>" Orders:</strong> <%= Guest.where(:meal => meal).count %></li>
+            <li><strong>Mathew "<%= meal.name %>" Orders:</strong> <%= Guest.joins(:party).where(:meal => meal, :parties => { :label => 0 }).count %></li>
+            <li><strong>Johny "<%= meal.name %>" Orders:</strong> <%= Guest.joins(:party).where(:meal => meal, :parties => { :label => 1 }).count %></li>
           <% end %>
         </ul>
       </ul>
