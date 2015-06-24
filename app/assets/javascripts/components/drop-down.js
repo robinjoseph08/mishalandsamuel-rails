@@ -9,7 +9,9 @@ App.DropDownComponent = Ember.Component.extend({
   actions: {
 
     toggleProperty: function (prop) {
-      this.toggleProperty(prop);
+      if (!this.get('disabled')) {
+        this.toggleProperty(prop);
+      }
     },
 
     selectItem: function (item) {

@@ -207,6 +207,16 @@ object:focus {
 /* RADIO BUTTONS */
 
 .radio-buttons {
+  &.disabled {
+    .radio-button {
+      cursor: default;
+
+      i {
+        color: $disabled-color;
+      }
+    }
+  }
+
   .radio-button {
     cursor: pointer;
     @include disable-selection;
@@ -261,6 +271,22 @@ object:focus {
 
     .dropdown-list {
       display: block;
+    }
+  }
+
+  &.disabled {
+    .dropdown-selected {
+      border: 2px $disabled-color solid;
+      color: $disabled-color;
+      cursor: default;
+
+      .selected-name {
+        padding-right: 0;
+      }
+
+      .caret {
+        display: none;
+      }
     }
   }
 

@@ -1,4 +1,4 @@
-<div class="radio-buttons">
+<div {{bind-attr class=":radio-buttons disabled:disabled"}}>
   <div class="radio-button" {{action 'assignValue' 'attending'}}>
     <i {{bind-attr class=":fa guest.isAttending:fa-check-circle-o:fa-circle-o"}}></i>
     <p>Attending</p>

@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="container centered">
-  <h2>To RSVP for the wedding, please enter the code found in your invitation.</h2>
+  <h2>The window to RSVP has passed. To view your response, please enter the code found in your invitation.</h2>
   <form {{action "findParty" on="submit"}}>
     {{input type="text" value=code placeholder="RSVP Code"}}
     <input type="submit" {{bind-attr disabled="isProcessing"}} value="Submit">
@@ -16,9 +16,6 @@
   {{/if}}
   {{#if model}}
     <hr>
-    <h2>You're almost done RSVPing!</h2>
-    <p>If you wish to receive an update about your table number at a time closer to the wedding, enter your email address below. If not, you will receive it the day of the wedding.</p>
-    <p><em>Remember to click "Save" at the bottom if you change anything.</em></p>
     <p class="small-error"><em>We recommend viewing this form on a larger screen for a better experience.</em></p>
     <div class="section">
       <table>
@@ -32,21 +29,13 @@
           {{#each guest in guests}}
             <tr>
               <td>{{guest.name}}</td>
-              <td class="left">{{radio-button guest=guest}}</td>
-              <td class="center">{{drop-down defaultMessage="Select a meal" emptyMessage="No meal options available" items=meals item=guest.meal}}</td>
-              <td class="center">{{input type="email" value=guest.email placeholder="Email Address"}}</td>
+              <td class="left">{{radio-button guest=guest disabled=true}}</td>
+              <td class="center">{{drop-down defaultMessage="Select a meal" emptyMessage="No meal options available" items=meals item=guest.meal disabled=true}}</td>
+              <td class="center">{{input type="email" value=guest.email placeholder="Email Address" disabled=true}}</td>
             </tr>
           {{/each}}
         </tbody>
       </table>
-      <br>
-      <div class="button-group">
-        <button {{action 'setAll' 'attending'}}>All Are Attending</button>
-        <button {{action 'setAll' 'not_attending'}}>All Are Not Attending</button>
-      </div>
-      <br>
-      <button {{action 'submit'}} {{bind-attr disabled="isProcessing"}}>Save</button>
-      {{banner-container errors=errors notices=notices}}
       <br>
       <p><em>If you have any questions or concerns, send an email to <a href="mailto:mishalandsamuel@gmail.com">mishalandsamuel@gmail.com</a>, and we'd be happy to address them.</em></p>
     </div>

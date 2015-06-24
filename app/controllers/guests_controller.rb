@@ -18,6 +18,7 @@ class GuestsController < ApplicationController
   def update
     print_line
     puts "GUEST UPDATE: #{params[:id]}"
+    return render :json => { :errors => ["Sorry, the window to RSVP has passed."] }.to_json, :status => :not_acceptable
 
     errors = []
     @guest.assign_attributes guest_params

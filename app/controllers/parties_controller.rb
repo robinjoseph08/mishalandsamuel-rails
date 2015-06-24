@@ -20,6 +20,7 @@ class PartiesController < ApplicationController
   def update
     print_line
     puts "PARTY UPDATE: #{params[:id]}"
+    return render :json => { :errors => ["Sorry, the window to RSVP has passed."] }.to_json, :status => :not_acceptable
 
     errors = []
     @party.assign_attributes party_params

@@ -1,4 +1,4 @@
-<div {{bind-attr class=":dropdown isOpen:open"}}>
+<div {{bind-attr class=":dropdown isOpen:open disabled:disabled"}}>
   <div class="dropdown-selected" {{action "toggleProperty" "isOpen"}}>
     {{#if item}}
       <span class="selected-name">{{item.name}}</span>
