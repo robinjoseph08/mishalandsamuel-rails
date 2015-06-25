@@ -50,8 +50,15 @@ body.mailer {
       img {
         display: block;
         margin: 0 auto;
-        width: 150px;
-        height: 150px;
+
+        &.logo {
+          width: 150px;
+          height: 150px;
+        }
+
+        &.floor-plan {
+          width: 100%;
+        }
       }
 
       ul {

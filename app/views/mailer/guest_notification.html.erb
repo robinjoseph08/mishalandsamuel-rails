@@ -1,6 +1,6 @@
 <div class="container">
   <div class="box">
-    <img src="http://mishalandsamuel.com/logo.png">
+    <img class="logo" src="http://mishalandsamuel.com/logo.png">
     <p>Hi <%= @guest[:name].join(', ').gsub(/, #{@guest[:name].last}$/, (@guest[:name].count > 2 ? "," : "") + " and #{@guest[:name].last}") %>,</p>
     <p>Thank you for your RSVP! We are very excited that you will be joining us on our wedding day. Here are the details of your RSVP:</p>
     <ul>

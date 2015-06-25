@@ -15,6 +15,14 @@ class Mailer < ActionMailer::Base
          :subject => "Thanks for your RSVP!"
   end
 
+  def table_notification guest, party
+    @guest = guest
+    @party = party
+    mail :to      => @guest[:email],
+         :from    => "Mishal and Samuel <#{ENV['MAS_EMAIL_ADDRESS']}>",
+         :subject => "Wedding Reminders!"
+  end
+
   def send_csv path
     @data = {}
     @data[:unconfirmed] = {

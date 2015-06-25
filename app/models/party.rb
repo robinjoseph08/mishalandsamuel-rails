@@ -13,24 +13,14 @@ class Party < ActiveRecord::Base
   end
 
   def send_guest_notification_email
-    if self.guests.count > 0
-      guests = []
-      self.guests.find_each do |guest|
-        next if guest.not_attending? || guest.email.blank? # only deal with guests that are attending and have an email
-        index = guests.index { |item| item[:email] == guest.email }
-        if index.nil?
-          g = {
-            :name  => [guest.name],
-            :email => guest.email
-          }
-          guests << g
-        else
-          guests[index][:name] << guest.name
-        end
-      end
-      guests.each do |guest|
-        Mailer.guest_notification(guest, self).deliver_now
-      end
+    consolidated_guests.each do |guest|
+      Mailer.guest_notification(guest, self).deliver_now
+    end
+  end
+
+  def send_table_notification_email
+    consolidated_guests.each do |guest|
+      Mailer.table_notification(guest, self).deliver_now
     end
   end
 
@@ -47,6 +37,24 @@ class Party < ActiveRecord::Base
   end
 
   private
+
+  def consolidated_guests
+    guests = []
+    self.guests.find_each do |guest|
+      next if guest.not_attending? || guest.email.blank? # only deal with guests that are attending and have an email
+      index = guests.index { |item| item[:email] == guest.email }
+      if index.nil?
+        g = {
+          :name  => [guest.name],
+          :email => guest.email
+        }
+        guests << g
+      else
+        guests[index][:name] << guest.name
+      end
+    end
+    guests
+  end
 
   def generate_code
     if self.code.blank?

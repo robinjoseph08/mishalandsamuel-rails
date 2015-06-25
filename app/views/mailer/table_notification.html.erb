@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="box">
+    <img class="logo" src="http://mishalandsamuel.com/logo.png">
+    <p>Hi <%= @guest[:name].join(', ').gsub(/, #{@guest[:name].last}$/, (@guest[:name].count > 2 ? "," : "") + " and #{@guest[:name].last}") %>,</p>
+    <p>We're so excited that our wedding day is almost here! Just as a reminder, it will be this Saturday, June 27 at 10am at Custer Road United Methodist Church (6601 Custer Road, Plano, TX 75023). We would also like to inform you of your table number for the reception to follow. Here are your details:</p>
+    <ul>
+      <% @party.guests.order("id ASC").find_each do |guest| %>
+        <li><strong><%= guest.name %></strong></li>
+        <ul>
+          <li><%= guest.response.gsub("_", " ").titleize %></li>
+          <% if guest.attending? %>
+            <li><%= guest.meal.name %></li>
+            <li>Table <%= guest.table_number %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
+    <p>Please take a look at this image of the reception floor plan to find your table:</p>
+    <img class="floor-plan" src="http://mishalandsamuel.com/floor_plan.png" alt="Floor Plan">
+    <p>If you would like more details, visit <a href="http://mishalandsamuel.com">mishalandsamuel.com</a>. We can't wait to see you! Please continue to keep us in your thoughts and prayers.</p>
+    <p class="closing">
+      <span>Love,</span>
+      <br>
+      <span>Mishal and Samuel</span>
+    </p>
+  </div>
+  <div class="verse">"...but the greatest of these is love." 1 Corinthians 13:13</div>
+</div>

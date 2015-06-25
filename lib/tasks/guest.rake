@@ -54,6 +54,35 @@ namespace :guest do
     Rake::Task["guest:_import"].execute :label => 'johny'  if label == 'johny'  || label == 'all'
   end
 
+  desc "Import table numbers from CSV"
+  task :seating => [:environment] do |t, args|
+    path = File.expand_path("../../../data/seating.csv", __FILE__)
+
+    CSV.foreach path do |row|
+      id    = row.shift.try(:strip).try(:to_i)
+      name  = row.shift.try(:strip)
+      table = row.shift.try(:strip).try(:to_i)
+
+      if id
+        g = Guest.find id
+        if g.attending?
+          if table.nil?
+            puts "Blank table for attending guest: #{id}, #{name}, #{table}"
+          else
+            g.table_number = table
+            g.save
+          end
+        else
+          unless table.nil?
+            puts "Table assigned for not attending guest: #{id}, #{name}, #{table}"
+          end
+        end
+      else
+        puts "Unparsable id: #{id}, #{name}, #{table}"
+      end
+    end
+  end
+
   desc "Generate the CSV of guests"
   task :export => [:environment] do
     file_name = "master.csv"
@@ -82,6 +111,35 @@ namespace :guest do
 
         csv << data
       end
+    end
+  end
+
+  desc "List guests alphabetically"
+  task :list => [:environment] do
+    print_city = false
+    next_print_city = false
+    letter = "A"
+    puts letter
+    guests = Guest.where(:response => 1).order("name ASC")
+    guests.each_with_index do |g, i|
+      next unless g.attending?
+      if g.name.first != letter
+        letter = g.name.first
+        puts letter
+      end
+      str = g.name
+      if guests[i + 1] && g.name == guests[i + 1].name
+        print_city = true
+        next_print_city = true
+      else
+        next_print_city = false
+      end
+      if print_city && !g.party.city.nil?
+        str += " (#{g.party.city})"
+      end
+      str += " - Table #{g.table_number}"
+      puts str
+      print_city = next_print_city
     end
   end
 
@@ -114,6 +172,14 @@ namespace :guest do
     file_name = "master.csv"
     path      = File.expand_path("../../../data/#{file_name}", __FILE__)
     Mailer.send_csv(path).deliver_now
+  end
+
+  desc "Send table number notification email"
+  task :table_number_email => [:environment] do
+    Party.order("id ASC").all.each do |p|
+      puts "Sending email to party #{p.id}..."
+      p.send_table_notification_email
+    end
   end
 
 end
